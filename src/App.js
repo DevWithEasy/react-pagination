@@ -15,7 +15,7 @@ function App() {
   },[])
 
   //প্রতি পেজে কত গুলো ডাটা দেখানো হবে
-  const perPage = 10
+  const perPage = 5
 
 
   //পেজ নাম্বার কত গুলো হবে
@@ -38,22 +38,34 @@ function App() {
 
 
   // পেজ নাম্বার চেঞ্জ করার ফাংশন
+  //এখানে যে নাম্বারটি সিলেক্ট করবেন ইভেন্টের সিলেক্ট দ্বারা এর ভ্যালু অটোমেটিক পরিবর্তন হবে
   const changePage = ({selected})=>{
     setPageNumber(selected)
   }
-
   
+  
+
   return (
     <div className="App">
-    {
-      displayData.map(item=><p>{item.title}</p>)
-    }  
 
+    <h1 className="title">React Pagination</h1>
+
+    {
+      displayData.map(post=>
+        <div className='post' key={post.id}>
+          <h3 className="post_title">{post.title}</h3>
+          <p className='post_body'>{post.body}</p>
+        </div>
+      )
+    }  
+    <div className="post_count">
+      <p>Now you are : ({pageVisited+1}-{pageVisited+perPage}) No. post {pageNumber+1}/{pageCount} pages </p>
+    </div>
     <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
         onPageChange={changePage}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={2}
         pageCount={pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
