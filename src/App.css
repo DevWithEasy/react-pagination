@@ -1,3 +1,17 @@
+.app{
+  position: relative;
+}
+.github{
+  position: absolute;
+  top:10px;
+  right: 2px;
+  transform: rotate(90deg);
+  text-align: center;
+  background: #29c8f4;
+  padding: 10px;
+  color:#ffffff;
+}
+
 /* pagination css */
 
 .paginate {
